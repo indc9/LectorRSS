@@ -1,0 +1,9 @@
+body {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.container-fluid {
+    padding-left: 0vh;
+    padding-right: 0vh;
+}
