@@ -1,6 +1,6 @@
 .container-fluid {
     padding: 1.5em 2.5em;
-  }
+}
 .main-flex {
     margin: 5% 15%;
 }
@@ -9,5 +9,8 @@
     margin: 0 1em;
 }
 .mat-column-description {
-    width: 60%;
+    min-width: 20em !important;
+}
+.mat-column-image {
+    width: 10% !important;
 }
