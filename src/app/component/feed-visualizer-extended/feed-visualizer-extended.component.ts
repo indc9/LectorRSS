@@ -4,6 +4,9 @@ import { Subject } from 'rxjs';
 import { delay, takeUntil } from 'rxjs/operators';
 import { FeedVisualizerService } from 'src/app/service/feed-visualizer/feed-visualizer.service';
 
+/**
+* @title RSS Feed Selected Info
+*/
 @Component({
   selector: 'app-feed-visualizer-extended',
   templateUrl: './feed-visualizer-extended.component.html',
@@ -15,7 +18,7 @@ export class FeedVisualizerExtendedComponent implements OnInit {
   description: string | undefined;
   image: string | undefined;
 
-  unsubscribe = new Subject<boolean>(); //Destroy subscriptions when terminating
+  unsubscribe = new Subject<boolean>(); //Destroy Subscription when terminating
 
   constructor(private readonly feedVisualizerService: FeedVisualizerService,
     public route: ActivatedRoute, private router: Router) { }
@@ -43,6 +46,11 @@ export class FeedVisualizerExtendedComponent implements OnInit {
         })
     })
 
+  }
+
+  // Go back to parent route
+  goBack(){
+    this.router.navigate(["../"], {relativeTo: this.route});
   }
 
   ngOnDestroy(): void {
