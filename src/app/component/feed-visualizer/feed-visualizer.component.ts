@@ -18,6 +18,7 @@ const ELEMENT_DATA: RssFeed[] = [
 
 /**
 * @title Feed Table with filtering by Title
+* Design Pattern used: MVC
 */
 @Component({
   selector: 'app-feed-visualizer',
@@ -44,7 +45,6 @@ export class FeedVisualizerComponent implements OnInit {
     .subscribe((data: any[]) => {  
       this.parseXML(data)  
         .then((data: any) => {  
-          console.log(data)
           data.forEach((element: RssFeed) => {
             this.dataSource.data.push(element)
             this.dataSource._updateChangeSubscription();
@@ -86,7 +86,6 @@ export class FeedVisualizerComponent implements OnInit {
           });  
       parser.parseString(data, function (err: any, result: any) {  
         var obj = result.rss.channel[0]; 
-        console.log(result.rss.channel[0]) 
         for (k in obj.item) {  
           var item = obj.item[k];
           arr.push({  
@@ -105,7 +104,6 @@ export class FeedVisualizerComponent implements OnInit {
   * @param RSS Feed Data
   */
   showExtendedView(row: RssFeed) {
-    //console.log("vista extendida" + JSON.stringify(row.description))
     this.feedVisualizerService.setFeedTitle(row.title);
     this.feedVisualizerService.setFeedDescription(row.description);
     this.feedVisualizerService.setFeedImage(row.image);

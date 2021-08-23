@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 
+/**
+* @title RSS Feed Reader
+* Design Pattern used: MVC
+*/
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

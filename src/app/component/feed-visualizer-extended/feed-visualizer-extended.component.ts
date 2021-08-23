@@ -37,9 +37,7 @@ export class FeedVisualizerExtendedComponent implements OnInit {
               .subscribe(data => {
                 this.image = data;
 
-                if(this.title && this.description && this.image) {
-                  console.log("OK")
-                } else {
+                if(!this.title || !this.description || !this.image) {
                   this.router.navigate(["../"], {relativeTo: this.route});
                 }
               })
