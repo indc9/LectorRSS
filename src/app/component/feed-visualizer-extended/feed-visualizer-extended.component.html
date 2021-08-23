@@ -1,1 +1,15 @@
-<p>feed-visualizer-extended works!</p>
+
+<div class="box container-fluid">
+    <button mat-icon-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    <div class="main-flex d-flex flex-row flex-wrap justify-content-center">
+        <mat-list>
+            <mat-list-item> <b>Title:&nbsp;</b> {{title}} </mat-list-item>
+            <mat-list-item> <b>Description:&nbsp;</b> {{description}} </mat-list-item>
+            <mat-list-item> <b>Image:&nbsp;</b>  
+                <a href="{{image}}" target="_blank"> Link </a>
+            </mat-list-item>
+        </mat-list>
+    </div>
+</div>

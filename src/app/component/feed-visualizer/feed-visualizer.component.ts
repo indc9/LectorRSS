@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { FeedVisualizerService } from 'src/app/service/feed-visualizer/feed-visualizer.service';
 import * as xml2js from "xml2js";
 
@@ -28,6 +30,8 @@ export class FeedVisualizerComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'image'];
   dataSource: MatTableDataSource<RssFeed>;
 
+  unsubscribe = new Subject<boolean>(); //Destroy Subscription when terminating
+
   constructor(private readonly feedVisualizerService: FeedVisualizerService,
     private router: Router) { 
     this.dataSource = new MatTableDataSource();
@@ -36,6 +40,7 @@ export class FeedVisualizerComponent implements OnInit {
   ngOnInit(): void {
     //Subscribe RSS Feed Data from Service
     this.feedVisualizerService.getRssFeedData()
+    .pipe(takeUntil(this.unsubscribe))
     .subscribe((data: any[]) => {  
       this.parseXML(data)  
         .then((data: any) => {  
@@ -67,6 +72,7 @@ export class FeedVisualizerComponent implements OnInit {
 
   /**
   * Store xml data into array variable
+  * 'xml2js' library used to parse XML feed data. More info: https://www.npmjs.com/package/xml2js
   * @returns Array with RSS data
   */
   parseXML(data: RssFeed[]) {  
@@ -105,6 +111,10 @@ export class FeedVisualizerComponent implements OnInit {
     this.feedVisualizerService.setFeedImage(row.image);
 
     this.router.navigate(["/inicio/info"]);
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next(true);
   }
 
 }
