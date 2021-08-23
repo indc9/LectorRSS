@@ -6,8 +6,6 @@ RSS Breaking News Feed data collected from NASA: https://www.nasa.gov/rss/dyn/lg
 
 Proxy used to fetch XML data for development purposes only. Has to be manually activated the first time: https://cors-anywhere.herokuapp.com/ 
 
-Local deployment at http://localhost:4200/
-
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
