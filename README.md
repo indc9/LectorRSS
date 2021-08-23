@@ -1,6 +1,10 @@
-# LectorRss
+# RSS Feed Reader
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
+
+RSS Breaking News Feed data collected from NASA: https://www.nasa.gov/rss/dyn/lg_image_of_the_day.rss
+
+Proxy used to fetch XML data for development purposes only: https://cors-anywhere.herokuapp.com/
 
 ## Development server
 
